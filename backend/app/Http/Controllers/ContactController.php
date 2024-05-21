@@ -17,4 +17,17 @@ class ContactController extends Controller
             ]
             );
     }
+
+    public function saveContact(Request $request){
+        $contact = new Contact();
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->designation = $request->designation;
+        $contact->contact_on = $request->contact_on;
+        $contact->save();
+        return response()->json([
+            'message' => 'Contact created Sucessfully',
+            'code' => 200
+        ]);
+    }
 }
